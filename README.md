@@ -18,3 +18,7 @@ project creation:
 In order to use this solution you have to use a back-end API which does the authentication via JSON message handling.
 A simple back-end API example can be found here:
 https://github.com/kviktorman/phpSecureLogin
+
+Currently on login screen there is 2 button login and logout and during page init there is a session check request.
+Login workflow sends a (currenlty hardcoded message) to back-end API, if u/p matched back-end creates a session and sends back the successful authentication message.
+Logout sends session destroy request.
