@@ -39,10 +39,41 @@ export class AuthenticationHandlingService {
         });
     }
 
+    userAction(): Observable<any> {
+        let token = localStorage.getItem('jwt-token');
+        let timestamp = new Date();
+
+        let logoutMessage = {
+            messageName: "processUserAction",
+            token: token,
+            currentTime: timestamp
+        };
+
+        //store user information into the local storage and return status information as an observable
+        return Observable.create((observer) => {
+            this.messageHandlingService.postMessageObservable(GENERALSETTINGS.userActionURL, logoutMessage)
+                .subscribe(
+                data => {
+                    //localStorage.removeItem('jwt-token');
+                    observer.next(data);
+                    observer.complete();
+                },
+                error => {
+                    observer.next(error);
+                    observer.complete();
+                });
+        });
+
+    }
+
     //logout user
     logout(): Observable<any> {
+
+        let token = localStorage.getItem('jwt-token');
+
         let logoutMessage = {
-            messageName: "processLogout"
+            messageName: "processLogout",
+            token: token
         };
 
         //store user information into the local storage and return status information as an observable
@@ -50,7 +81,7 @@ export class AuthenticationHandlingService {
             this.messageHandlingService.postMessageObservable(GENERALSETTINGS.logoutURL, logoutMessage)
                 .subscribe(
                 data => {
-                    localStorage.removeItem('currentUser');
+                    localStorage.removeItem('jwt-token');
                     observer.next(data);
                     observer.complete();
                 },

@@ -16,6 +16,17 @@ export class LoginComponent implements OnInit {
         private authenticationHandlingService: AuthenticationHandlingService
     ) { }
 
+
+    processUserAction(): void {
+        console.log('Login called');
+        this.authenticationHandlingService.userAction().subscribe(
+            data => {
+                console.log(data);
+            },
+            error => {
+                console.log(error);
+            });
+    }
     processLogin(): void {
         console.log('Login called');
         this.authenticationHandlingService.login("username", "password").subscribe(
@@ -51,7 +62,6 @@ export class LoginComponent implements OnInit {
 
             console.log("session check");
             console.log(JSON.stringify(response));
-            console.log(JSON.stringify(response.token));
         }
         );
     }
