@@ -22,3 +22,7 @@ https://github.com/kviktorman/phpSecureLogin
 Currently on login screen there is 2 button login and logout and during page init there is a session check request.
 Login workflow sends a (currenlty hardcoded message) to back-end API, if u/p matched back-end creates a session and sends back the successful authentication message.
 Logout sends session destroy request.
+
+The current solution is going to send the token in the message body not in the header as usually the jwt token are sent.
+This is because in the current state i will not resolve the CORS issues for header authorization. 
+Later its going to be developed in it, but now the focus is different.

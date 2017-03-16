@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+
 import 'rxjs/add/operator/toPromise';
 
 import { MessageHandlingService } from '../message-handling/message-handling.service';
@@ -26,7 +27,8 @@ export class AuthenticationHandlingService {
             this.messageHandlingService.postMessageObservable(GENERALSETTINGS.loginURL, loginMessage)
                 .subscribe(
                 data => {
-                    localStorage.setItem('currentUser', JSON.stringify(data.userId));
+                    //JSON.stringify(data.userId)
+                    localStorage.setItem('jwt-token', data.token);
                     observer.next(data);
                     observer.complete();
                 },

@@ -16,8 +16,11 @@ export class SessionCheckService {
 
     checkSession(): Promise<boolean> {
 
+        let token = localStorage.getItem('jwt-token');
+
         let json = {
-            messageName: "getSession"
+            messageName: "getSession",
+            token: token
         };
 
         return new Promise(resolve => {

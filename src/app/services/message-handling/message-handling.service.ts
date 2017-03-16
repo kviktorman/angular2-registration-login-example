@@ -41,6 +41,13 @@ export class MessageHandlingService {
         this.headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
         this.headers.append('Accept', 'application/json');
 
+        //this.headers.append('Access-Control-Allow-Methods', 'POST');
+        //this.headers.append('Access-Control-Allow-Origin', '*');
+        //this.headers.append('Access-Control-Allow-Headers', '*');
+        //this.headers.append('Access-Control-Expose-Headers', 'Authorization');
+        //this.headers.append('Authorization', "my-token");
+        console.log('beleptem');
+
         //post message and return post response
         return this.http
             .post(requestURL, JSON.stringify(message), { headers: this.headers })

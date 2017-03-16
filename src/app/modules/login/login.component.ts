@@ -46,8 +46,12 @@ export class LoginComponent implements OnInit {
 
     sessionCheck(): void {
         this.sessionCheckService.checkSession().then(() => {
+
+            let response = this.sessionCheckService.getResponse();
+
             console.log("session check");
-            console.log(this.sessionCheckService.getResponse());
+            console.log(JSON.stringify(response));
+            console.log(JSON.stringify(response.token));
         }
         );
     }
