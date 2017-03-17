@@ -11,9 +11,12 @@ More info about angular-cli install:
 https://github.com/angular/angular-cli
 
 project creation:
-'~ > ng new PROJECT_NAME
-'~ > cd PROJECT_NAME
-'~ > ng serve
+
+~ > ng new PROJECT_NAME
+
+~ > cd PROJECT_NAME
+
+~ > ng serve
 
 In order to use this solution you have to use a back-end API which does the authentication via JSON message handling.
 A simple back-end API example can be found here:
@@ -29,5 +32,7 @@ Later its going to be developed in it, but now the focus is different.
 
 This application uses crypto-js for password hashing.
 "crypto-js" module installation: 
-'~ >npm install crypto-js --save 
-'~ >npm install @types/crypto-js --save
+
+~ >npm install crypto-js --save 
+
+~ >npm install @types/crypto-js --save
