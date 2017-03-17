@@ -4,6 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { SessionCheckService } from '../../services/session-check/session-check.service';
 import { AuthenticationHandlingService } from '../../services/authentication-handling/authentication-handling.service';
 
+import * as CryptoJS from 'crypto-js';
+
 @Component({
     selector: 'login',
     templateUrl: 'login.component.html',
@@ -18,7 +20,6 @@ export class LoginComponent implements OnInit {
 
 
     processUserAction(): void {
-        console.log('Login called');
         this.authenticationHandlingService.userAction().subscribe(
             data => {
                 console.log(data);
@@ -27,9 +28,11 @@ export class LoginComponent implements OnInit {
                 console.log(error);
             });
     }
-    processLogin(): void {
+    processLogin(email: string, password: string): void {
         console.log('Login called');
-        this.authenticationHandlingService.login("username", "password").subscribe(
+        let hashedPassword = CryptoJS.enc.Hex.stringify(CryptoJS.SHA512(password));
+
+        this.authenticationHandlingService.login(email, hashedPassword).subscribe(
             data => {
                 console.log(data);
             },

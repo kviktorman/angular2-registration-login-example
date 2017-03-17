@@ -26,3 +26,8 @@ Logout sends session destroy request.
 The current solution is going to send the token in the message body not in the header as usually the jwt token are sent.
 This is because in the current state i will not resolve the CORS issues for header authorization. 
 Later its going to be developed in it, but now the focus is different.
+
+This application uses crypto-js for password hashing.
+"crypto-js" module installation: 
+~ >npm install crypto-js --save 
+~ >npm install @types/crypto-js --save

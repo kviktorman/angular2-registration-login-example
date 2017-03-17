@@ -18,8 +18,8 @@ export class AuthenticationHandlingService {
         //prepare user login request
         let loginMessage = {
             messageName: "processLogin",
-            txtEmail: "test@example.com",
-            hPassword: "445fc3655cede6a6c841d08f0776fac92a0118d1d1597046e09909310b2664538642292515aee4737c39826d70508466f5df36417f09274cb470ca4b6857be7a"
+            txtEmail: username,
+            hPassword: password
         };
 
         //store user information into the local storage and return status information as an observable
