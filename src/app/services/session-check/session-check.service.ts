@@ -25,7 +25,7 @@ export class SessionCheckService {
 
         return new Promise(resolve => {
             //check session with promised way
-            this.messageHandlingService.postMessage(GENERALSETTINGS.sessionURL, json).then(() => {
+            this.messageHandlingService.postMessage(GENERALSETTINGS.userActionURL, json).then(() => {
 
                 this.response = this.messageHandlingService.getResponse();
                 if (this.response.idUser > 0) {

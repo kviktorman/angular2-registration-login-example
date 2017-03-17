@@ -24,7 +24,7 @@ export class AuthenticationHandlingService {
 
         //store user information into the local storage and return status information as an observable
         return Observable.create((observer) => {
-            this.messageHandlingService.postMessageObservable(GENERALSETTINGS.loginURL, loginMessage)
+            this.messageHandlingService.postMessageObservable(GENERALSETTINGS.userActionURL, loginMessage)
                 .subscribe(
                 data => {
                     //JSON.stringify(data.userId)
@@ -78,7 +78,7 @@ export class AuthenticationHandlingService {
 
         //store user information into the local storage and return status information as an observable
         return Observable.create((observer) => {
-            this.messageHandlingService.postMessageObservable(GENERALSETTINGS.logoutURL, logoutMessage)
+            this.messageHandlingService.postMessageObservable(GENERALSETTINGS.userActionURL, logoutMessage)
                 .subscribe(
                 data => {
                     localStorage.removeItem('jwt-token');
