@@ -13,19 +13,21 @@ import * as CryptoJS from 'crypto-js';
 })
 export class LoginComponent implements OnInit {
 
+
     constructor(
         private sessionCheckService: SessionCheckService,
         private authenticationHandlingService: AuthenticationHandlingService
     ) { }
 
+    responseJSON = '';
 
     processUserAction(): void {
         this.authenticationHandlingService.userAction().subscribe(
             data => {
-                console.log(data);
+                this.responseJSON = JSON.stringify(data);
             },
             error => {
-                console.log(error);
+                this.responseJSON = JSON.stringify(error);
             });
     }
     processLogin(email: string, password: string): void {
@@ -34,10 +36,10 @@ export class LoginComponent implements OnInit {
 
         this.authenticationHandlingService.login(email, hashedPassword).subscribe(
             data => {
-                console.log(data);
+                this.responseJSON = JSON.stringify(data);
             },
             error => {
-                console.log(error);
+                this.responseJSON = JSON.stringify(error);
             });
     }
 
@@ -45,10 +47,10 @@ export class LoginComponent implements OnInit {
         console.log('Logout called');
         this.authenticationHandlingService.logout().subscribe(
             data => {
-                console.log(data);
+                this.responseJSON = JSON.stringify(data);
             },
             error => {
-                console.log(error);
+                this.responseJSON = JSON.stringify(error);
             });
 
     }
@@ -64,7 +66,7 @@ export class LoginComponent implements OnInit {
             let response = this.sessionCheckService.getResponse();
 
             console.log("session check");
-            console.log(JSON.stringify(response));
+            this.responseJSON = JSON.stringify(response);
         }
         );
     }

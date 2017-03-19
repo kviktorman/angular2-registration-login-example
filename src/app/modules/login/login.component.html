@@ -1,5 +1,4 @@
 <form>
-    <h3>Currently AuthenticationHandlingService sends hardcoded json request. </h3>
     <label for="email">E-mail:</label>
     <input type="text" name="email" id="email" [(ngModel)]="email" placeholder="e-mail ..." required />
     <label for="password">Password:</label>
@@ -9,3 +8,5 @@
 <button (click)="sessionCheck();" id='btn-check'>Check</button>
 <button (click)="processUserAction();" id='btn-userAction'>UserAction</button>
 <button (click)="processLogout();" id='btn-logout'>Logout</button>
+<p></p>
+<strong><span id="responseJSON">{{responseJSON}}</span></strong>

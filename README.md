@@ -22,9 +22,11 @@ In order to use this solution you have to use a back-end API which does the auth
 A simple back-end API example can be found here:
 https://github.com/kviktorman/phpSecureLogin
 
-Currently on login screen there is 2 button login and logout and during page init there is a session check request.
-Login workflow sends a (currenlty hardcoded message) to back-end API, if u/p matched back-end creates a session and sends back the successful authentication message.
-Logout sends session destroy request.
+Currently on login screen there are 4 buttons login, check, userAction and logout. During page init there is a session check request (same what check button does).
+Login workflow sends a to back-end API, if u/p matched back-end creates a token and sends back the successful authentication message.
+Logout sends session destroy request. userAction forwards the request to anouther API.
+
+The response JSON is visualized under the buttons. (Current version not contains navigation, it will come...)
 
 The current solution is going to send the token in the message body not in the header as usually the jwt token are sent.
 This is because in the current state i will not resolve the CORS issues for header authorization. 
@@ -36,3 +38,11 @@ This application uses crypto-js for password hashing.
 ~ >npm install crypto-js --save 
 
 ~ >npm install @types/crypto-js --save
+
+workflow with 
+https://github.com/kviktorman/phpSecureLogin
+
+1. Login  send u/p and in return gets a token
+2. useraction requests anouther API, in body sends the token (there is a token validation check)
+- button press timestamp send and returns in the json
+3. Logout just clears the token
